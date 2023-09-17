@@ -1,4 +1,4 @@
-package br.com.gustavoantunes.habitsphere
+package br.com.gustavoantunes.habitsphereapplication
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest

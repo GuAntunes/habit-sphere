@@ -1,4 +1,4 @@
-package br.com.gustavoantunes.habitsphere
+package br.com.gustavoantunes.habitsphereapplication
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
