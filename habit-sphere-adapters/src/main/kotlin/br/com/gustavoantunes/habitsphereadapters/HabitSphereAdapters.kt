@@ -1,11 +1,11 @@
-package br.com.gustavoantunes.habitsphereapplication
+package br.com.gustavoantunes.habitsphereadapters
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class HabitSphereApplication
+class HabitSphereAdapters
 
 fun main(args: Array<String>) {
-	runApplication<HabitSphereApplication>(*args)
+	runApplication<HabitSphereAdapters>(*args)
 }
