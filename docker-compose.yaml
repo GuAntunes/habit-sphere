@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:13 # Choose the PostgreSQL version you prefer
+    container_name: habit-sphere-postgres-container
+    environment:
+      POSTGRES_DB: habit_sphere
+      POSTGRES_USER: habit-sphere-user
+      POSTGRES_PASSWORD: habit-sphere-password
+    ports:
+      - "5432:5432" # Map container port 5432 to host port 5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data # Persist data between container restarts
+
+volumes:
+  postgres_data:

@@ -1,1 +1,16 @@
-
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/habit_sphere
+    username: habit-sphere-user
+    password: habit-sphere-password
+    driver-class-name: org.postgresql.Driver
+  flyway:
+    url: ${spring.datasource.url}
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+    schemas: public
+    default-schema: public
+    locations=classpath: db/migration
+openapi:
+  definitions:
+    url: http://localhost:8080

@@ -1,7 +1,9 @@
-package br.com.gustavoantunes.habitspheredomain.models
+package br.com.gustavoantunes.habitspheredomain.model
+
+import java.util.UUID
 
 data class Habit(
-    val id: Long,
+    val id: UUID,
     val name: String,
     val description: String?,
     val frequency: HabitFrequency,
