@@ -7,6 +7,6 @@ interface TaskRepository {
     fun getAllTasks(): List<Task>
     fun getTaskById(taskId: UUID): Task?
     fun createTask(task: Task): Task
-    fun updateTask(taskId: UUID, updatedTask: Task): Task
+    fun updateTask(updatedTask: Task): Task
     fun deleteTask(taskId: UUID)
 }

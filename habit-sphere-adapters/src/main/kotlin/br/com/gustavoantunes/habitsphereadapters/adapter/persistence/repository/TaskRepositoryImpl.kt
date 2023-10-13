@@ -24,8 +24,8 @@ class TaskRepositoryImpl(
         return taskJpaRepository.insert(taskEntityOf(task)).toTask()
     }
 
-    override fun updateTask(taskId: UUID, updatedTask: Task): Task {
-        TODO("Not yet implemented")
+    override fun updateTask(updatedTask: Task): Task {
+        return taskJpaRepository.update(taskEntityOf(updatedTask)).toTask()
     }
 
     override fun deleteTask(taskId: UUID) {

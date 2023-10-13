@@ -1,6 +1,7 @@
 package br.com.gustavoantunes.habitsphereadapters.adapter.resource
 
 import br.com.gustavoantunes.habitsphereadapters.adapter.resource.request.TaskCreateRequest
+import br.com.gustavoantunes.habitsphereadapters.adapter.resource.request.TaskUpdateRequest
 import br.com.gustavoantunes.habitsphereadapters.port.TaskRestPort
 import br.com.gustavoantunes.habitsphereapplication.service.TaskService
 import br.com.gustavoantunes.habitspheredomain.model.Task
@@ -33,9 +34,9 @@ class RestTaskControllerAdapter(private val taskService: TaskService) : TaskRest
         return taskService.createTask(task.toTask())
     }
 
-    @PutMapping("/{taskId}")
-    override fun updateTask(@PathVariable taskId: UUID, @RequestBody updatedTask: Task): Task {
-        return taskService.updateTask(taskId, updatedTask)
+    @PutMapping
+    override fun updateTask( @RequestBody updatedTask: TaskUpdateRequest): Task {
+        return taskService.updateTask(updatedTask.toTask())
     }
 
     @DeleteMapping("/{taskId}")

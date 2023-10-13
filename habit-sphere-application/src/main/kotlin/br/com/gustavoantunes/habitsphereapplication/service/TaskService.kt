@@ -20,8 +20,8 @@ class TaskService(private val taskRepository: TaskRepository) {
         return taskRepository.createTask(task)
     }
 
-    fun updateTask(taskId: UUID, updatedTask: Task): Task {
-        return taskRepository.updateTask(taskId, updatedTask)
+    fun updateTask(updatedTask: Task): Task {
+        return taskRepository.updateTask(updatedTask)
     }
 
     fun deleteTask(taskId: UUID) {
