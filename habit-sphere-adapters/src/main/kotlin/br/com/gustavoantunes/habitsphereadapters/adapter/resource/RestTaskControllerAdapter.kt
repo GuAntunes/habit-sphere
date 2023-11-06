@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.RestController
 import java.util.UUID
 
 @RestController
-@RequestMapping("/tasks")
+@RequestMapping("/task")
 class RestTaskControllerAdapter(private val taskService: TaskService) : TaskRestPort {
 
-    @GetMapping
+    @GetMapping("/list")
     override fun getAllTasks(): List<Task> {
         return taskService.getAllTasks()
     }
@@ -35,7 +35,7 @@ class RestTaskControllerAdapter(private val taskService: TaskService) : TaskRest
     }
 
     @PutMapping
-    override fun updateTask( @RequestBody updatedTask: TaskUpdateRequest): Task {
+    override fun updateTask(@RequestBody updatedTask: TaskUpdateRequest): Task {
         return taskService.updateTask(updatedTask.toTask())
     }
 

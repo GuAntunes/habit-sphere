@@ -9,12 +9,12 @@ import br.com.gustavoantunes.habitspheredomain.model.TaskStatus
 import org.springframework.data.annotation.Id
 import org.springframework.data.relational.core.mapping.Table
 import java.time.LocalDateTime
-import java.util.*
 
 @Table("task")
 data class TaskEntity(
     @Id
     override val id: AggregateId = AggregateId(),
+    val accountId: AggregateId,
     val title: String,
     val description: String? = null,
     val dueDate: LocalDateTime,
@@ -25,6 +25,7 @@ data class TaskEntity(
     fun toTask(): Task {
         return Task(
             id = id.toUUID(),
+            accountId = accountId.toUUID(),
             title = title,
             description = description,
             dueDate = dueDate,
@@ -38,6 +39,7 @@ data class TaskEntity(
 fun taskEntityOf(task: Task): TaskEntity {
     return TaskEntity(
         id = AggregateId(task.id),
+        accountId = AggregateId(task.accountId),
         title = task.title,
         description = task.description,
         dueDate = task.dueDate,

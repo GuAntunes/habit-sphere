@@ -10,6 +10,7 @@ import java.util.UUID
 
 data class TaskUpdateRequest(
     val id: UUID,
+    val accountId: UUID,
     val title: String,
     val description: String?,
     val dueDate: LocalDateTime,
@@ -20,6 +21,7 @@ data class TaskUpdateRequest(
     fun toTask(): Task =
         taskOf(
             id = id,
+            accountId = accountId,
             title = title,
             description = description,
             dueDate = dueDate,

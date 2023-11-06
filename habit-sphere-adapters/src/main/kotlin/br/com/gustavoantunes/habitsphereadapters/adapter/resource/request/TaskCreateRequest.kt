@@ -6,8 +6,10 @@ import br.com.gustavoantunes.habitspheredomain.model.Task
 import br.com.gustavoantunes.habitspheredomain.model.TaskStatus
 import br.com.gustavoantunes.habitspheredomain.model.taskOf
 import java.time.LocalDateTime
+import java.util.*
 
 data class TaskCreateRequest(
+    val accountId: UUID,
     val title: String,
     val description: String?,
     val dueDate: LocalDateTime,
@@ -17,6 +19,7 @@ data class TaskCreateRequest(
 ) {
     fun toTask(): Task =
         taskOf(
+            accountId = accountId,
             title = title,
             description = description,
             dueDate = dueDate,

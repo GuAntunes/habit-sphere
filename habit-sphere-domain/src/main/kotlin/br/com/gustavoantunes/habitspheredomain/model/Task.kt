@@ -6,6 +6,7 @@ import java.util.UUID.randomUUID
 
 fun taskOf(
     id: UUID = randomUUID(),
+    accountId: UUID,
     title: String,
     description: String?,
     dueDate: LocalDateTime,
@@ -15,6 +16,7 @@ fun taskOf(
 ): Task =
     Task(
         id = id,
+        accountId = accountId,
         title = title,
         description = description,
         dueDate = dueDate,
@@ -25,6 +27,7 @@ fun taskOf(
 
 data class Task(
     val id: UUID,
+    val accountId: UUID,
     val title: String,
     val description: String?,
     val dueDate: LocalDateTime,
