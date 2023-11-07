@@ -34,7 +34,11 @@ data class Task(
     val priority: Priority,
     val status: TaskStatus,
     val category: Category
-)
+) {
+    init {
+        require(title.isNotBlank()) { "O título da tarefa não pode estar em branco." }
+    }
+}
 
 enum class Priority {
     LOW, MEDIUM, HIGH

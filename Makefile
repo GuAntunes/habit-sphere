@@ -22,6 +22,12 @@ migrate: ## Run Flyway database migrations
 clean: ## Clean the project
 	$(GRADLEW) clean
 
+up: ## Up infrastructure
+	docker-compose up -d
+
+down: ## Down infrastructure
+	docker-compose down
+
 help: ## Show this help message
 	@echo "Usage: make [target]"
 	@echo "Targets:"

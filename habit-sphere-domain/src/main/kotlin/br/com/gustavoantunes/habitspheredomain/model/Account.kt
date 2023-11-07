@@ -20,4 +20,10 @@ data class Account(
     val username: String,
     val email: String,
     val password: String
-)   
+) {
+    init {
+        require(username.isNotBlank()) { "Username cannot be blank." }
+        require(email.isNotBlank()) { "Email cannot be blank." }
+        require(password.isNotBlank()) { "Password cannot be blank." }
+    }
+}
