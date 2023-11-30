@@ -27,6 +27,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
+	implementation("org.springframework.kafka:spring-kafka")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.postgresql:postgresql")
 	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:$openapiVersion")
@@ -36,7 +37,7 @@ dependencies {
 }
 
 flyway {
-	url = "jdbc:postgresql://localhost:5432/habit_sphere"
+	url = "jdbc:postgresql://localhost:5435/habit_sphere"
 	user = "habit-sphere-user"
 	password = "habit-sphere-password"
 	schemas = arrayOf("public")

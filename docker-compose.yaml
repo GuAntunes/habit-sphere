@@ -9,9 +9,51 @@ services:
       POSTGRES_USER: habit-sphere-user
       POSTGRES_PASSWORD: habit-sphere-password
     ports:
-      - "5432:5432" # Map container port 5432 to host port 5432
+      - "5435:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data # Persist data between container restarts
+  zookeeper:
+    image: debezium/zookeeper:2.4
+    container_name: zookeeper
+    hostname: zookeeper
+    ports:
+      - "2185:2181"
+    labels:
+      NAME: zookeeper
 
+  kafka:
+    image: debezium/kafka:2.4
+    container_name: kafka
+    hostname: kafka
+    ports:
+      - "9095:9095"
+      - "29095:29095"
+    environment:
+      BROKER_ID: 1
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9095,PLAINTEXT_HOST://kafka:29095
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_LISTENERS: PLAINTEXT://:9095,PLAINTEXT_HOST://:29095
+      ZOOKEEPER_CONNECT: zookeeper:2181
+    labels:
+      NAME: kafka
+    volumes:
+      - kafka:/data
+    depends_on:
+      - zookeeper
+
+  kafka-ui:
+    image: provectuslabs/kafka-ui
+    container_name: kafka-ui
+    ports:
+      - "8000:8080"
+    depends_on:
+      - kafka
+      - zookeeper
+    environment:
+      KAFKA_CLUSTERS_0_NAME: bees-credit
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:29095
+      KAFKA_CLUSTERS_0_ZOOKEEPER: zookeeper:2181
 volumes:
   postgres_data:
+  kafka:

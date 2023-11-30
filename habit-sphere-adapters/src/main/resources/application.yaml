@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/habit_sphere
+    url: jdbc:postgresql://localhost:5435/habit_sphere
     username: habit-sphere-user
     password: habit-sphere-password
     driver-class-name: org.postgresql.Driver
@@ -11,6 +11,19 @@ spring:
     schemas: public
     default-schema: public
     locations=classpath: db/migration
+  kafka:
+    bootstrap-servers: localhost:9095
+    consumer:
+      group-id: habit-sphere-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+kafka:
+  topics:
+    my-topic-1: "my-first-topic"
 openapi:
   definitions:
     url: http://localhost:8080
